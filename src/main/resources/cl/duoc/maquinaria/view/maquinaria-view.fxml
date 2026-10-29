@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<BorderPane prefHeight="650.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.maquinaria.controlador.MaquinariaController">
+   <top>
+      <Label text="Arriendo de maquinaria" BorderPane.alignment="CENTER_LEFT">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="280.0" spacing="15.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+         </padding>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="280.0" spacing="8.0">
+               <children>
+                  <Label text="Registro de maquinaria">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Tipo:" />
+                  <ComboBox fx:id="tipo" maxWidth="1.7976931348623157E308" onAction="#cambiarTipo" prefWidth="150.0" promptText="Seleccione..." />
+                  <Label text="Código:" />
+                  <TextField fx:id="codigo" />
+                  <Label text="Horas de uso:" />
+                  <TextField fx:id="horas" />
+                  <Label text="Potencia:" />
+                  <TextField fx:id="potencia" />
+                  <Separator prefWidth="200.0" />
+                  <Label text="Datos de la excavadora:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Peso (ton):" />
+                  <TextField fx:id="peso" />
+                  <CheckBox fx:id="mantencion" mnemonicParsing="false" text="¿Mantención al día?" />
+                  <CheckBox fx:id="certificacion" mnemonicParsing="false" text="¿Certificación de seguridad?" />
+                  <Separator prefWidth="200.0" />
+                  <Label text="Datos del cargador frontal:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Capacidad del balde (m³):" />
+                  <TextField fx:id="capacidad" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#registrar" text="Registrar" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

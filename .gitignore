@@ -1,2 +1,3 @@
 # Project exclude paths
-/target/LEEME.txt
+/target/
+LEEME.txt
