@@ -1,66 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-
-<BorderPane prefHeight="650.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.maquinaria.controlador.MaquinariaController">
+<BorderPane fx:controller="cl.duoc.maquinaria.controlador.MaquinariaController" prefHeight="650.0" prefWidth="1050.0" xmlns="[http://javafx.com/javafx/21](http://javafx.com/javafx/21)" xmlns:fx="[http://javafx.com/fxml/1](http://javafx.com/fxml/1)">
    <top>
-      <Label text="Arriendo de maquinaria" BorderPane.alignment="CENTER_LEFT">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
-         </BorderPane.margin>
+      <Label BorderPane.alignment="CENTER_LEFT" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Arriendo de maquinaria">
+         <BorderPane.margin><Insets bottom="10" left="15" right="15" top="15"/></BorderPane.margin>
       </Label>
    </top>
    <center>
-      <HBox prefHeight="100.0" prefWidth="280.0" spacing="15.0" BorderPane.alignment="CENTER">
-         <padding>
-            <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
-         </padding>
-         <children>
-            <VBox prefHeight="200.0" prefWidth="280.0" spacing="8.0">
-               <children>
-                  <Label text="Registro de maquinaria">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label text="Tipo:" />
-                  <ComboBox fx:id="tipo" maxWidth="1.7976931348623157E308" onAction="#cambiarTipo" prefWidth="150.0" promptText="Seleccione..." />
-                  <Label text="Código:" />
-                  <TextField fx:id="codigo" />
-                  <Label text="Horas de uso:" />
-                  <TextField fx:id="horas" />
-                  <Label text="Potencia:" />
-                  <TextField fx:id="potencia" />
-                  <Separator prefWidth="200.0" />
-                  <Label text="Datos de la excavadora:">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label text="Peso (ton):" />
-                  <TextField fx:id="peso" />
-                  <CheckBox fx:id="mantencion" mnemonicParsing="false" text="¿Mantención al día?" />
-                  <CheckBox fx:id="certificacion" mnemonicParsing="false" text="¿Certificación de seguridad?" />
-                  <Separator prefWidth="200.0" />
-                  <Label text="Datos del cargador frontal:">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label text="Capacidad del balde (m³):" />
-                  <TextField fx:id="capacidad" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#registrar" text="Registrar" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS" />
-         </children>
+      <HBox spacing="15.0">
+         <padding><Insets bottom="5" left="15" right="15" top="5"/></padding>
+         <VBox prefWidth="280.0" spacing="8.0">
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Registro de maquinaria"/>
+            <Label text="Tipo:"/>
+            <ComboBox fx:id="tipo" maxWidth="Infinity" onAction="#cambiarTipo" promptText="Seleccione..."/>
+            <Label text="Código:"/>
+            <TextField fx:id="codigo"/>
+            <Label text="Horas de uso:"/>
+            <TextField fx:id="horas"/>
+            <Label text="Potencia:"/>
+            <TextField fx:id="potencia"/>
+            <Separator/>
+            <Label style="-fx-font-weight: bold;" text="Datos de la excavadora"/>
+            <Label text="Peso (ton):"/>
+            <TextField fx:id="peso"/>
+            <CheckBox fx:id="mantencion" text="Mantención al día"/>
+            <CheckBox fx:id="certificacion" text="Certificación de seguridad"/>
+            <Separator/>
+            <Label style="-fx-font-weight: bold;" text="Datos del cargador frontal"/>
+            <Label text="Capacidad del balde (m³):"/>
+            <TextField fx:id="capacidad"/>
+            <Button maxWidth="Infinity" onAction="#registrar" text="Registrar"/>
+         </VBox>
+         <VBox HBox.hgrow="ALWAYS" spacing="10.0">
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Máquinas registradas"/>
+            <TableView VBox.vgrow="ALWAYS" fx:id="tabla">
+               <columns>
+                  <TableColumn fx:id="columnaTipo" prefWidth="120.0" text="Tipo">
+                     <cellValueFactory><PropertyValueFactory property="tipo"/></cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="columnaCodigo" prefWidth="110.0" text="Código">
+                     <cellValueFactory><PropertyValueFactory property="codigo"/></cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="columnaHoras" prefWidth="100.0" text="Horas de uso">
+                     <cellValueFactory><PropertyValueFactory property="horasUso"/></cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="columnaPotencia" prefWidth="90.0" text="Potencia">
+                     <cellValueFactory><PropertyValueFactory property="potencia"/></cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="columnaCosto" prefWidth="130.0" text="Costo servicio">
+                     <cellValueFactory><PropertyValueFactory property="costoServicio"/></cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            <HBox alignment="CENTER_LEFT">
+               <Button onAction="#eliminar" text="Eliminar"/>
+            </HBox>
+         </VBox>
       </HBox>
    </center>
+   <bottom>
+      <Label fx:id="mensaje" minHeight="35.0" style="-fx-font-weight: bold;" text=" " wrapText="true">
+         <BorderPane.margin><Insets bottom="12" left="15" right="15" top="8"/></BorderPane.margin>
+      </Label>
+   </bottom>
 </BorderPane>
